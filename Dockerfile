@@ -1,27 +1,27 @@
 ARG BASE_IMAGE
 ARG APPLICATION_NAME
 # get the base image from argument
-FROM maven:3.9-amazoncorretto-21 as builder
+FROM eclipse-temurin:17.0.10_7-jre-focal
 
 WORKDIR /app
 
 COPY . .
 
-RUN mvn clean package -DskipTests package
+RUN mvn clean package package
 
 FROM ${BASE_IMAGE}
 
 # Add Maintainer Info
-LABEL authors="brian.kamaug@gmail.com"
+LABEL authors="gituikumacharia2@gmail.com"
 
 # reference application name build argument
 ARG APPLICATION_NAME
 
 # App home directory
-ENV APP_HOME_DIR=/apps/ipsl
+ENV APP_HOME_DIR==/apps/development
 
 # App jar file name
-ENV EXPOSE_PORT=8080
+ENV EXPOSE_PORT=8281
 
 # Switch to root user
 USER root
@@ -57,4 +57,4 @@ WORKDIR ${APP_HOME_DIR}
 USER appuser
 
 # Entry point to run jar file
-ENTRYPOINT ["java","-Dserver.port=8080","-jar","application.jar"]
+ENTRYPOINT ["java","-Dserver.port=8281","-jar","application.jar"]
