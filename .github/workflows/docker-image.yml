@@ -43,5 +43,5 @@ jobs:
 
     - name: Tag Docker image with 'latest'
       run: |
-        docker tag ${{ secrets.DOCKER_USERNAME }}/book-service ${{ secrets.DOCKER_USERNAME }}/authentication-services
+        docker tag ${{ secrets.DOCKER_USERNAME }}/authentication-services ${{ secrets.DOCKER_USERNAME }}/authentication-services
         docker push ${{ secrets.DOCKER_USERNAME }}/authentication-services

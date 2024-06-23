@@ -21,7 +21,7 @@ ARG APPLICATION_NAME
 ENV APP_HOME_DIR==/apps/development
 
 # App jar file name
-ENV EXPOSE_PORT=8281
+ENV EXPOSE_PORT=8080
 
 # Switch to root user
 USER root
@@ -57,4 +57,4 @@ WORKDIR ${APP_HOME_DIR}
 USER appuser
 
 # Entry point to run jar file
-ENTRYPOINT ["java","-Dserver.port=8281","-jar","application.jar"]
+ENTRYPOINT ["java","-Dserver.port=8080","-jar","application.jar"]
